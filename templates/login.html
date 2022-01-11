@@ -1,0 +1,71 @@
+<head>
+    <link rel="icon" type="img/png" href="{{url_for('static', filename='img/Raiden shogun soft icon.jfif')}}"/>
+    <title>neko - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100&family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <style>
+        .center-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        .form-login {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+            padding: 30px 70px;
+            border-radius: 10%;
+            font-family: 'Secular One', sans-serif;
+        }
+        
+        .btn-and-input {
+            background-color: black;
+            color: white;
+            border: transparent;
+            padding: 10px 10px;
+            font-family: 'Secular One', sans-serif;
+            border-radius: 25px;
+        }
+        
+
+        html {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{url_for('static', filename='img/'+bg)}}");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        }
+    </style>
+    <body>
+        <div class="center-screen">
+            <form action="/" method="post" class="form-login" data-aos="zoom-in" data-aos-duration="1000" autocomplete="off">
+                <h2 style="color: white;">Login</h1>
+                <p style="color: white;">{{ data }}</p>
+                <br>
+                <input type="text" name="username" id="username" placeholder="username" class="btn-and-input" required/>
+                <br>
+                <br>
+                <input type="password" name="password" id="password" placeholder="password" class="btn-and-input" required/>
+                <br>
+                <br>
+                <button type="submit" class="btn-and-input">Submit</button>
+                <br>
+                <br>
+            </form>
+        </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        var input = document.getElementById('username');
+        input.focus();
+        input.select();
+    </script>
+    </body>
+</html>
+

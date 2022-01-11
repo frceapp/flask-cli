@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<link rel="icon" type="img/png" href="{{url_for('static', filename='img/Raiden shogun soft icon.jfif')}}"/>
+<title>neko - cli</title>
+<html>
+<style>
+    .cli {
+        border: none;
+        border-color: transparent;
+        background-color: transparent;
+        color: white;
+    }
+
+    .btn-logout {
+        background-color: white;
+        color: black;
+        align-content: center;
+        float: right;
+        border: transparent;
+        padding: 5px 5px;
+    }
+
+    textarea { 
+        white-space: nowrap; 
+        background-color: transparent;
+        color: white;
+        border: transparent;
+        overflow: hidden auto;
+        resize: none;
+        }
+    html {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{url_for('static', filename='img/'+bg)}}");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    #submit
+    {    
+        visibility: hidden;
+    }
+</style>
+<body>
+    <form action="{{ url_for('cli')}}" method="post" autocomplete="off">
+        <input type="text" name="cli" id="cli" class="cli"></from>
+        <button type="submit" value="submit" id="submit">t</button>
+        <button onclick="window.location = '{{ end_sesion }}'" type="button" class="btn-logout">Logout</button>
+    </form>
+    <textarea id="textarea">
+        {{ output }}
+    </textarea>
+
+    <script>
+        var input = document.getElementById('cli');
+        input.focus();
+        input.select();
+
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var txtarea = document.getElementById("textarea");
+        txtarea.rows = h/15.881;
+        txtarea.cols = w/7.469; 
+    </script>
+</body>
+</html>
