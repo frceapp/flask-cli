@@ -1,4 +1,4 @@
-import os, random
+import os, random, db
 from  flask import Flask, render_template, request as rq, g, redirect, session, url_for, flash
 
 app = Flask(__name__)
@@ -15,12 +15,13 @@ def login():
         file = open("log_headers.log", "a")
         file.write(str(headers+"\n"))
         session.pop('user', None)
-        if rq.form['username'] == str(os.getenv("USER")) and rq.form['password'] == str(os.getenv("PASSWORD")):
-            session['user'] = rq.form['username']
-            return redirect(url_for('cli'))
-        else:
+        resp = tuple(db.get_name(rq.form['username'], rq.form['password']))
+        if not resp:
             wrong = "wrong username or password"
             return render_template('login.html', data=wrong, bg=background_rd)
+        session['user'] = rq.form['username']
+        return redirect(url_for('cli'))
+            
 
     return render_template('login.html', bg=background_rd)
 
